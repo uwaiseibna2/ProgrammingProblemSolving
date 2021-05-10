@@ -4,15 +4,15 @@ using namespace std;
 main()
 {
     int x,y,n,c;
-    cin >>c;
+    scanf ("%d", &c);
     while (c--)
     {    
-    cin >>x>>y>>n;
+    scanf ("%d""%d""%d", &x,&y,&n);
     for (int k= n; k >=0;k--)
     {
         if (k%x==y)
         {
-            cout<<k<<endl;
+            printf("%d",k);
             break;
         }
     }

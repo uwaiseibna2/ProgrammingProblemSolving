@@ -1,0 +1,85 @@
+[1mdiff --git a/linked_list.cpp b/linked_list.cpp[m
+[1mindex a8b4d14..c810525 100644[m
+[1m--- a/linked_list.cpp[m
+[1m+++ b/linked_list.cpp[m
+[36m@@ -111,6 +111,19 @@[m [mvoid reversell()[m
+     }[m
+     head= prev;[m
+ }[m
+[32m+[m[32mvoid reverseusingrecur(Node *current)[m
+[32m+[m[32m{[m
+[32m+[m[32m    if (current->next == NULL)[m
+[32m+[m[32m    {[m
+[32m+[m[32m        head = current;[m
+[32m+[m[32m        return;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    reverseusingrecur(current->next);[m
+[32m+[m[32m    Node *temp = current->next;[m
+[32m+[m[32m    temp->next = current;[m
+[32m+[m[32m    current->next= NULL;[m
+[32m+[m
+[32m+[m[32m}[m
+ [m
+ main()[m
+ {[m
+[36m@@ -119,7 +132,7 @@[m [mmain()[m
+     {[m
+         push(i);[m
+     }[m
+[31m-    reversell();[m
+[32m+[m[32m    reverseusingrecur(head);[m
+     [m
+     print();[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/samedecimal.cpp b/samedecimal.cpp[m
+[1mindex e26b40a..0da6c04 100644[m
+[1m--- a/samedecimal.cpp[m
+[1m+++ b/samedecimal.cpp[m
+[36m@@ -1,40 +1,24 @@[m
+ #include <bits/stdc++.h>[m
+ using namespace std;[m
+[31m-  [m
+[31m-// Function that count the[m
+[31m-// total numbersProgram between L[m
+[31m-// and R which have all the[m
+[31m-// digit same[m
+ int count_same_digit(int L, int R)[m
+ {[m
+     int tmp = 0, ans = 0;[m
+[31m-  [m
+[31m-    // length of R[m
+     int n = log10(R) + 1;[m
+   [m
+[31m-    for (int i = 0; i < n; i++) {[m
+[31m-  [m
+[31m-        // tmp has all digits as 1[m
+[32m+[m[32m    for (int i = 0; i < n; i++)[m[41m [m
+[32m+[m[32m    {[m
+         tmp = tmp * 10 + 1;[m
+[32m+[m[32m        for (int j = 1; j <= 9; j++)[m[41m [m
+[32m+[m[32m        {[m
+   [m
+[31m-        // For each multiple[m
+[31m-        // of tmp in range 1 to 9,[m
+[31m-        // check if it present[m
+[31m-        // in range [L, R][m
+[31m-        for (int j = 1; j <= 9; j++) {[m
+[31m-  [m
+[31m-            if (L <= (tmp * j)[m
+[31m-                && (tmp * j) <= R) {[m
+[31m-  [m
+[31m-                // Increment the required count[m
+[32m+[m[32m            if (L <= (tmp * j)&& (tmp * j) <= R)[m[41m [m
+[32m+[m[32m            {[m
+                 ans++;[m
+             }[m
+         }[m
+     }[m
+     return ans;[m
+ }[m
+[31m-  [m
+[31m-// Driver Program[m
+ int main()[m
+ {[m
+     int L,R;[m

@@ -111,6 +111,19 @@ void reversell()
     }
     head= prev;
 }
+void reverseusingrecur(Node *current)
+{
+    if (current->next == NULL)
+    {
+        head = current;
+        return;
+    }
+    reverseusingrecur(current->next);
+    Node *temp = current->next;
+    temp->next = current;
+    current->next= NULL;
+
+}
 
 main()
 {
@@ -119,7 +132,7 @@ main()
     {
         push(i);
     }
-    reversell();
+    reverseusingrecur(head);
     
     print();
 }

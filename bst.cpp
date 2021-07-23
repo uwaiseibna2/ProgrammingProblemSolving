@@ -81,15 +81,12 @@ int maxbst()
 int findHeight(bst *root)
 {
     if(root == NULL)
-    return 0;
+    return -1;
     else
     {
         int lheight = findHeight(root->left);
         int rheight = findHeight(root->right);
-        if(lheight>rheight)
-        return lheight+1;
-        else
-        return rheight+1;
+        return max(lheight,rheight)+1;
     }
 }
 main()
@@ -102,6 +99,7 @@ main()
     root = insert(root,1);
     root = insert(root,3);
     root = insert(root,7);
+    root = insert(root,9);
     root = insert(root,8);
     
     cout<<minbst()<<endl;

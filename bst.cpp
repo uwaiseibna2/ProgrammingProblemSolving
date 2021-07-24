@@ -50,7 +50,7 @@ bool search(int data)
         search(data);
     }
 }
-int minbst()
+int minbst(bst *root)
 {
     if (root==NULL)
     return -1;
@@ -64,7 +64,7 @@ int minbst()
         return temp->data;
     }
 }
-int maxbst()
+int maxbst(bst *root)
 {
     if(root ==NULL)
     return -1;
@@ -105,44 +105,60 @@ void printLevelOrder(bst *root)
 }
 void printInorder(bst *root)
 {
-    if(root == NULL)
-    return;
+    if (root == NULL) return;
     printInorder(root->left);
     cout<<root->data<<" ";
     printInorder(root->right);
 }
-void printPreorder(bst *root)
-{
-    if(root == NULL)
-    return;
-    cout<<root->data<<" ";
-    printPreorder(root->left);
-    printPreorder(root->right);
-}
+
 void printPostorder(bst *root)
 {
-    if(root == NULL)
-    return;
+    if(root == NULL) return;
     printPostorder(root->left);
     printPostorder(root->right);
     cout<<root->data<<" ";
 }
 
+void printPreorder(bst *root)
+{
+    if (root == NULL) return;
+    cout<<root->data<<" ";
+    printPreorder(root->left);
+    printPreorder(root->right);
+}
+bool checkBST(bst *root)
+{
+    if (root == NULL) return true;
+    if (root->left== NULL && root->right== NULL)
+    {
+        return true;
+    }
+    if (root->left!= NULL&& root->data>= maxbst(root->left))
+    {
+        return true;
+    }
+    if (root->right!= NULL && root->data< minbst(root->right))
+    {
+        return true;
+    }
+    checkBST(root->left);
+    checkBST(root->right);
+    return false;
+}
+
+
 main()
 {
     root = NULL;
-    root = insert(root,5);
-    root = insert(root,6);
-    root = insert(root,4);
-    root = insert(root,2);
-    root = insert(root,1);
-    root = insert(root,3);
-    root = insert(root,7);
-    root = insert(root,9);
-    root = insert(root,8);
+    int a[]={15,20,17,13,12,14,18,25,10,11,9,30};
+
+    for(int i=0;i<12;i++)
+    {
+        root=insert(root,a[i]);
+    }
     
-    cout<<minbst()<<endl;
-    cout<<maxbst()<<endl;
+    cout<<minbst(root)<<endl;
+    cout<<maxbst(root)<<endl;
     cout<<findHeight(root)<<endl;
     printInorder(root);
     cout<<endl;
@@ -151,4 +167,6 @@ main()
     printPostorder(root);
     cout<<endl;
     printLevelOrder(root);
+    cout<<endl;
+    cout<<checkBST(root);
 }

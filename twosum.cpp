@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-int twosum(int *a,int size, int sum)
+void twosum(int *a,int size, int sum)
 {
     unordered_map<int,int> ump;
     for(int i=0;i<size;i++)
@@ -19,7 +19,7 @@ int twosum(int *a,int size, int sum)
     }
 
 }
-main()
+int main()
 {
     int a[]= {2,3,4,5,6,1,0};
    

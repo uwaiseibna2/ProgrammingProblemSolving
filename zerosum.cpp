@@ -6,12 +6,12 @@ int zerosum(int a[], int size)
 {
     unordered_set<int> s;
     int sum=0;
-    s.insert(sum);
+    s.insert(sum); //if an array has a subarray with zero sum at the begining
     for(int i=0;i<size;i++)
     {
         if(a[i]==0)
         {
-            continue;
+            continue; //don't execute following instructions for this iteration if a[i] is equal to 0
         }
         sum+=a[i];
         if(s.find(sum)!=s.end())

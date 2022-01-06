@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 void sla(int a[])
 {
     int max=a[0];

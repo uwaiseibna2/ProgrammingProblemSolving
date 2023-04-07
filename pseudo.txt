@@ -1,0 +1,29 @@
+Pseudocode:
+
+// pseudocode for p(i) values for each request i
+// Input: n requests with start times: s[1,2,..,n] and finish times: f[1,2,..,n] 
+// Output: an array p[1..n] containing p(i) value for each request i; here p(i) represents maximum number of requests completed before the start of present request i
+
+// Initialize an array p[1..n] to store the p(i) values for each request i
+p[1,...,n]=0
+// sorting the request in increasing order of finish times
+
+sort([1,...,n]) //increasing order
+
+// the first p value will be zero
+p[1] = 0 
+
+// for the next requests increment p[i] if by 1 for each prior requests completed before the start of the present request
+for i = 2 to n do
+	for j= 1 to i-1 do
+		if(f[j]<s[i])
+		{
+			p[i]=p[i]+1;
+		}
+	end for
+end for
+// Return the array p
+return p 
+
+// Runtime of the algorithm
+// The runtime of the algorithm is O(n^2) as the statement if(f[j]<s[i]) will be checked n-1*n-1 times in worst case.
